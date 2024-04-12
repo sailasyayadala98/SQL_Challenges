@@ -1,0 +1,359 @@
+**Schema (MySQL v8.0)**
+
+    -- Create the table
+    CREATE TABLE sustainable_clothing (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(100),
+    category VARCHAR(50),
+    size VARCHAR(10),
+    price FLOAT
+    );
+    -- Insert data into the table
+    INSERT INTO sustainable_clothing (product_id, product_name, category, size, price)
+    VALUES
+    (1, 'Organic Cotton T-Shirt', 'Tops', 'S', 29.99),
+    (2, 'Recycled Denim Jeans', 'Bottoms', 'M', 79.99),
+    (3, 'Hemp Crop Top', 'Tops', 'L', 24.99),
+    (4, 'Bamboo Lounge Pants', 'Bottoms', 'XS', 49.99),
+    (5, 'Eco-Friendly Hoodie', 'Outerwear', 'XL', 59.99),
+    (6, 'Linen Button-Down Shirt', 'Tops', 'M', 39.99),
+    (7, 'Organic Cotton Dress', 'Dresses', 'S', 69.99),
+    (8, 'Sustainable Swim Shorts', 'Swimwear', 'L', 34.99),
+    (9, 'Recycled Polyester Jacket', 'Outerwear', 'XL', 89.99),
+    (10, 'Bamboo Yoga Leggings', 'Activewear', 'XS', 54.99),
+    (11, 'Hemp Overalls', 'Bottoms', 'M', 74.99),
+    (12, 'Organic Cotton Sweater', 'Tops', 'L', 49.99),
+    (13, 'Cork Sandals', 'Footwear', 'S', 39.99),
+    (14, 'Recycled Nylon Backpack', 'Accessories', 'One Size', 59.99),
+    (15, 'Organic Cotton Skirt', 'Bottoms', 'XS', 34.99),
+    (16, 'Hemp Baseball Cap', 'Accessories', 'One Size', 24.99),
+    (17, 'Upcycled Denim Jacket', 'Outerwear', 'M', 79.99),
+    (18, 'Linen Jumpsuit', 'Dresses', 'L', 69.99),
+    (19, 'Organic Cotton Socks', 'Accessories', 'M', 9.99),
+    (20, 'Bamboo Bathrobe', 'Loungewear', 'XL', 69.99);
+    -- Create the table
+    CREATE TABLE marketing_campaigns (
+    campaign_id INT PRIMARY KEY,
+    campaign_name VARCHAR(100),
+    product_id INT,
+    start_date DATE,
+    end_date DATE,
+    FOREIGN KEY (product_id) REFERENCES sustainable_clothing (product_id)
+    );
+    -- Insert data into the table
+    INSERT INTO marketing_campaigns (campaign_id, campaign_name, product_id, start_date, end_date)
+    VALUES
+    (1, 'Summer Sale', 2, '2023-06-01', '2023-06-30'),
+    (2, 'New Collection Launch', 10, '2023-07-15', '2023-08-15'),
+    (3, 'Super Save', 7, '2023-08-20', '2023-09-15');
+    -- Create the table
+    CREATE TABLE transactions (
+    transaction_id INT PRIMARY KEY,
+    product_id INT,
+    quantity INT,
+    purchase_date DATE,
+    FOREIGN KEY (product_id) REFERENCES sustainable_clothing (product_id)
+    );
+    -- Insert data into the table
+    INSERT INTO transactions (transaction_id, product_id, quantity, purchase_date)
+    VALUES
+    (1, 2, 2, '2023-06-02'),
+    (2, 14, 1, '2023-06-02'),
+    (3, 5, 2, '2023-06-05'),
+    (4, 2, 1, '2023-06-07'),
+    (5, 19, 2, '2023-06-10'),
+    (6, 2, 1, '2023-06-13'),
+    (7, 16, 1, '2023-06-13'),
+    (8, 10, 2, '2023-06-15'),
+    (9, 2, 1, '2023-06-18'),
+    (10, 4, 1, '2023-06-22'),
+    (11, 18, 2, '2023-06-26'),
+    (12, 2, 1, '2023-06-30'),
+    (13, 13, 1, '2023-06-30'),
+    (14, 4, 1, '2023-07-04'),
+    (15, 6, 2, '2023-07-08'),
+    (16, 15, 1, '2023-07-08'),
+    (17, 9, 2, '2023-07-12'),
+    (18, 20, 1, '2023-07-12'),
+    (19, 11, 1, '2023-07-16'),
+    (20, 10, 1, '2023-07-20'),
+    (21, 12, 2, '2023-07-24'),
+    (22, 5, 1, '2023-07-29'),
+    (23, 10, 1, '2023-07-29'),
+    (24, 10, 1, '2023-08-03'),
+    (25, 19, 2, '2023-08-08'),
+    (26, 3, 1, '2023-08-14'),
+    (27, 10, 1, '2023-08-14'),
+    (28, 16, 2, '2023-08-20'),
+    (29, 18, 1, '2023-08-27'),
+    (30, 12, 2, '2023-09-01'),
+    (31, 13, 1, '2023-09-05'),
+    (32, 7, 1, '2023-09-05'),
+    (33, 6, 1, '2023-09-10'),
+    (34, 15, 2, '2023-09-14'),
+    (35, 9, 1, '2023-09-14'),
+    (36, 11, 2, '2023-09-19'),
+    (37, 17, 1, '2023-09-23'),
+    (38, 2, 1, '2023-09-28'),
+    (39, 14, 1, '2023-09-28'),
+    (40, 5, 2, '2023-09-30'),
+    (41, 16, 1, '2023-10-01'),
+    (42, 12, 2, '2023-10-01'),
+    (43, 1, 1, '2023-10-01'),
+    (44, 7, 1, '2023-10-02'),
+    (45, 18, 2, '2023-10-03'),
+    (46, 12, 1, '2023-10-03'),
+    (47, 13, 1, '2023-10-04'),
+    (48, 4, 1, '2023-10-05'),
+    (49, 12, 2, '2023-10-05'),
+    (50, 7, 1, '2023-10-06'),
+    (51, 4, 2, '2023-10-08'),
+    (52, 8, 2, '2023-10-08'),
+    (53, 16, 1, '2023-10-09'),
+    (54, 19, 1, '2023-10-09'),
+    (55, 1, 1, '2023-10-10'),
+    (56, 18, 2, '2023-10-10'),
+    (57, 2, 1, '2023-10-10'),
+    (58, 15, 2, '2023-10-11'),
+    (59, 17, 2, '2023-10-13'),
+    (60, 13, 1, '2023-10-13'),
+    (61, 10, 2, '2023-10-13'),
+    (62, 9, 1, '2023-10-13'),
+    (63, 19, 2, '2023-10-13'),
+    (64, 20, 1, '2023-10-14');
+
+---
+
+**Query #1**
+
+    select mc.campaign_name, count(t.transaction_id) as no_of_transactions
+    from  marketing_campaigns mc join transactions t on t.product_id=mc.product_id
+    where t.purchase_date>=mc.start_date and t.purchase_date<=mc.end_date
+    group by mc.campaign_name;
+
+| campaign_name         | no_of_transactions |
+| --------------------- | ------------------ |
+| Summer Sale           | 5                  |
+| New Collection Launch | 4                  |
+| Super Save            | 1                  |
+
+---
+**Query #2**
+
+    select t.product_id, sc.product_name, sum(t.quantity) as high_sale_quantity
+    from transactions t join sustainable_clothing sc on t.product_id=sc.product_id
+    group by t.product_id
+    order by high_sale_quantity desc
+    limit 1;
+
+| product_id | product_name           | high_sale_quantity |
+| ---------- | ---------------------- | ------------------ |
+| 12         | Organic Cotton Sweater | 9                  |
+
+---
+**Query #3**
+
+    select mc.product_id, sc.product_name, round(sum(t.quantity*sc.price),2) as total_rev_mc
+    from marketing_campaigns mc join transactions t on mc.product_id=t.product_id
+    join sustainable_clothing sc on t.product_id=sc.product_id
+    where t.purchase_date>=mc.start_date and t.purchase_date<=mc.end_date
+    group by mc.product_id
+    order by total_rev_mc desc;
+
+| product_id | product_name         | total_rev_mc |
+| ---------- | -------------------- | ------------ |
+| 2          | Recycled Denim Jeans | 479.94       |
+| 10         | Bamboo Yoga Leggings | 219.96       |
+| 7          | Organic Cotton Dress | 69.99        |
+
+---
+**Query #4**
+
+    select t.product_id, sc.product_name, round(sum(t.quantity*sc.price),2) as top_selling_product
+    from transactions t join sustainable_clothing sc on t.product_id=sc.product_id
+    group by t.product_id
+    order by top_selling_product desc
+    limit 1;
+
+| product_id | product_name         | top_selling_product |
+| ---------- | -------------------- | ------------------- |
+| 2          | Recycled Denim Jeans | 639.92              |
+
+---
+**Query #5**
+
+    select t.product_id,sc.product_name, round(sum(t.quantity),2) as prod_quan
+    from transactions t join sustainable_clothing sc on t.product_id=sc.product_id
+    group by t.product_id
+    order by prod_quan>(select round(avg(quantity),2) from transactions) desc;
+
+| product_id | product_name              | prod_quan |
+| ---------- | ------------------------- | --------- |
+| 15         | Organic Cotton Skirt      | 5         |
+| 8          | Sustainable Swim Shorts   | 2         |
+| 1          | Organic Cotton T-Shirt    | 2         |
+| 17         | Upcycled Denim Jacket     | 3         |
+| 7          | Organic Cotton Dress      | 3         |
+| 12         | Organic Cotton Sweater    | 9         |
+| 11         | Hemp Overalls             | 3         |
+| 20         | Bamboo Bathrobe           | 2         |
+| 9          | Recycled Polyester Jacket | 4         |
+| 2          | Recycled Denim Jeans      | 8         |
+| 6          | Linen Button-Down Shirt   | 3         |
+| 13         | Cork Sandals              | 4         |
+| 18         | Linen Jumpsuit            | 7         |
+| 4          | Bamboo Lounge Pants       | 5         |
+| 10         | Bamboo Yoga Leggings      | 8         |
+| 16         | Hemp Baseball Cap         | 5         |
+| 19         | Organic Cotton Socks      | 7         |
+| 5          | Eco-Friendly Hoodie       | 5         |
+| 14         | Recycled Nylon Backpack   | 2         |
+| 3          | Hemp Crop Top             | 1         |
+
+---
+**Query #6**
+
+    select t.purchase_date, round(avg(t.quantity*sc.price),2) as avg_revenue_mc
+    from transactions t  join marketing_campaigns mc on t.product_id=mc.product_id
+    join sustainable_clothing sc on t.product_id=sc.product_id
+    where t.purchase_date>=mc.start_date and t.purchase_date<=mc.end_date
+    group by t.purchase_date
+    order by t.purchase_date ;
+
+| purchase_date | avg_revenue_mc |
+| ------------- | -------------- |
+| 2023-06-02    | 159.98         |
+| 2023-06-07    | 79.99          |
+| 2023-06-13    | 79.99          |
+| 2023-06-18    | 79.99          |
+| 2023-06-30    | 79.99          |
+| 2023-07-20    | 54.99          |
+| 2023-07-29    | 54.99          |
+| 2023-08-03    | 54.99          |
+| 2023-08-14    | 54.99          |
+| 2023-09-05    | 69.99          |
+
+---
+**Query #7**
+
+    with prod_rev as(
+      select t.product_id as prod_id, sc.product_name, sum(t.quantity*sc.price) as prod_sale
+      from transactions t join sustainable_clothing sc on t.product_id=sc.product_id
+      group by prod_id
+          ),
+    tot_rev as(select sum(prod_sale) as tot_sale from prod_rev)
+           
+      select pr.prod_id,pr.product_name,round((pr.prod_sale/tr.tot_sale)*100,2) as prod_percent_contribution_intotal
+      from prod_rev pr
+      cross join tot_rev tr
+      order by prod_percent_contribution_intotal desc;
+
+| prod_id | product_name              | prod_percent_contribution_intotal |
+| ------- | ------------------------- | --------------------------------- |
+| 2       | Recycled Denim Jeans      | 13.71                             |
+| 18      | Linen Jumpsuit            | 10.49                             |
+| 12      | Organic Cotton Sweater    | 9.64                              |
+| 10      | Bamboo Yoga Leggings      | 9.42                              |
+| 9       | Recycled Polyester Jacket | 7.71                              |
+| 5       | Eco-Friendly Hoodie       | 6.42                              |
+| 4       | Bamboo Lounge Pants       | 5.35                              |
+| 17      | Upcycled Denim Jacket     | 5.14                              |
+| 11      | Hemp Overalls             | 4.82                              |
+| 7       | Organic Cotton Dress      | 4.5                               |
+| 15      | Organic Cotton Skirt      | 3.75                              |
+| 13      | Cork Sandals              | 3.43                              |
+| 20      | Bamboo Bathrobe           | 3                                 |
+| 16      | Hemp Baseball Cap         | 2.68                              |
+| 14      | Recycled Nylon Backpack   | 2.57                              |
+| 6       | Linen Button-Down Shirt   | 2.57                              |
+| 19      | Organic Cotton Socks      | 1.5                               |
+| 8       | Sustainable Swim Shorts   | 1.5                               |
+| 1       | Organic Cotton T-Shirt    | 1.28                              |
+| 3       | Hemp Crop Top             | 0.54                              |
+
+---
+**Query #8**
+
+    with on_mc as(
+      select avg(t.quantity) as avg_quan_during_mc
+      from marketing_campaigns mc join transactions t on mc.product_id=t.product_id
+      where t.purchase_date between mc.start_date and mc.end_date
+    ),
+    
+    non_mc as(
+      select avg(t.quantity) as avg_quan_not_in_mc
+      from marketing_campaigns mc join transactions t on mc.product_id=t.product_id
+      where t.purchase_date not between mc.start_date and mc.end_date
+    )
+    
+    select * from on_mc 
+    cross join non_mc;
+
+| avg_quan_during_mc | avg_quan_not_in_mc |
+| ------------------ | ------------------ |
+| 1.1000             | 1.3333             |
+
+---
+**Query #9**
+
+    with on_camp as(
+      select mc.product_id as prod,round(sum(t.quantity)*sc.price,2) as sum_revenue_during_mc
+      from marketing_campaigns mc join transactions t on mc.product_id=t.product_id
+      join sustainable_clothing sc on t.product_id=sc.product_id
+      where t.purchase_date between mc.start_date and mc.end_date 
+      group by mc.product_id
+    ),
+    
+    non_camp as(
+      select mc.product_id as prod,round(sum(t.quantity*sc.price),2) as sum_revenue_not_in_mc
+      from marketing_campaigns mc join transactions t on mc.product_id=t.product_id
+      join sustainable_clothing sc on t.product_id=sc.product_id
+      where t.purchase_date not between mc.start_date and mc.end_date
+      group by mc.product_id
+    )
+    
+    select oc.prod as products_id, sum_revenue_during_mc,sum_revenue_not_in_mc 
+    from on_camp oc
+    join non_camp noc on oc.prod=noc.prod;
+
+| products_id | sum_revenue_during_mc | sum_revenue_not_in_mc |
+| ----------- | --------------------- | --------------------- |
+| 2           | 479.94                | 159.98                |
+| 10          | 219.96                | 219.96                |
+| 7           | 69.99                 | 139.98                |
+
+---
+**Query #10**
+
+    select product_id,sum(quantity) as total_quantity,
+        count(distinct purchase_date) as sales_days,
+        dense_rank() over(order by total_quantity /sales_days desc) as rank_of_products
+    from transactions
+    group by product_id;
+
+| product_id | total_quantity | sales_days | rank_of_products |
+| ---------- | -------------- | ---------- | ---------------- |
+| 8          | 2              | 1          | 1                |
+| 12         | 9              | 5          | 2                |
+| 19         | 7              | 4          | 3                |
+| 18         | 7              | 4          | 3                |
+| 5          | 5              | 3          | 4                |
+| 15         | 5              | 3          | 4                |
+| 6          | 3              | 2          | 5                |
+| 17         | 3              | 2          | 5                |
+| 11         | 3              | 2          | 5                |
+| 9          | 4              | 3          | 6                |
+| 10         | 8              | 6          | 6                |
+| 4          | 5              | 4          | 7                |
+| 16         | 5              | 4          | 7                |
+| 2          | 8              | 7          | 8                |
+| 14         | 2              | 2          | 9                |
+| 13         | 4              | 4          | 9                |
+| 7          | 3              | 3          | 9                |
+| 3          | 1              | 1          | 9                |
+| 1          | 2              | 2          | 9                |
+| 20         | 2              | 2          | 9                |
+
+---
+
+[View on DB Fiddle](https://www.db-fiddle.com/f/6NtqBHm21KAqTrYjvnUCj4/4)
